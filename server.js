@@ -5,6 +5,8 @@ require('dotenv').config({ path: './.env' });
 const createCheckoutSession = require('./api/checkout');
 const webhook = require('./api/webHook');
 
+const paymentIntent = require('./api/paymentIntent');
+
 const app = express();
 const port = 8080;
 
@@ -18,6 +20,8 @@ app.get('/', (req, res) => res.send('Hello World'));
 
 app.post('/create-checkout-session', createCheckoutSession);
 app.post('/webhook', webhook);
+app.post('/create-payment-intent', paymentIntent);
+
 app.listen(port, () => console.log('Server Listing on Port', port));
 
 // .env
